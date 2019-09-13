@@ -13,7 +13,8 @@ class ListUser extends Component {
         super(props)
         this.state = {
             username: '',
-            data: []
+            data: {},
+            userdata:0
         };
     }
     handleChange = (text, name) => {
@@ -21,13 +22,16 @@ class ListUser extends Component {
             [name]: text
         })
     }
+    onChangedata = () => {
+        this.setState({userdata:1})
+    }
     onSearch = () => {
         let username = this.state.username
         axios.get(`${URL}users/${username}`)
             .then(response => {
                 const data = response.data;
                 this.setState({data});
-                console.log(data);
+                this.onChangedata()
             })
             .catch(error => {
                 alert(error)
@@ -44,11 +48,8 @@ class ListUser extends Component {
     }
     render() {
         const { width, height } = Dimensions.get('window');
-        if (this.state.data.length === 1) {
-            return (
-                <View><Text>Hai</Text></View>
-            );
-        }
+        console.log(this.state.userdata)
+        console.log(this.state.data)
         return (
             <View>
                 <View style={{ flex: 1, flexDirection: 'row', margin: 10 }}>
@@ -70,12 +71,12 @@ class ListUser extends Component {
                         </TouchableHighlight>
                     </View>
                 </View>
+                {this.state.userdata === 0 &&
                 <FlatList style={{ marginTop: 54 }}
                     data={this.props.list.data}
                     extraData={this.state}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) =>
-
                         <View style={styles}>
                             <View style={{ flex: 1, flexDirection: 'row', marginLeft: 10, marginRight: 10, marginTop: 10 }}>
                                 <View style={{ width: width * 25 / 100, height: 70 }} >
@@ -90,6 +91,22 @@ class ListUser extends Component {
                         </View>
                     }
                 />
+                }
+                {this.state.userdata > 0 &&
+                        <View style={styles}>
+                            <View style={{ flex: 1, flexDirection: 'row', marginLeft: 10, marginRight: 10, marginTop: 60 }}>
+                                <View style={{ width: width * 25 / 100, height: 70 }} >
+                                    <Avatar.Image size={70} source={{ uri: this.state.data.avatar_url }} />
+                                </View>
+                                <View style={{ width: width * 50 / 100, height: 70 }}>
+                                    <Text style={{ fontSize: 20, marginBottom: 6, fontWeight: 'bold' }}>{this.state.data.login}</Text>
+                                    <Text style={{ fontSize: 20 }}>{this.state.data.type}</Text>
+                                </View>
+                                <View style={{ width: width * 22 / 100, height: 70 }} />
+                            </View>
+                        </View>
+                        
+                }
             </View>
         )
     }

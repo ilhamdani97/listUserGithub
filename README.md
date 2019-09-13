@@ -5,13 +5,15 @@
 This project is still on very early development stage. If you want to use for production, use it with your own risk.
 <br>More feature Coming Really Soon.
 
+## BarBar Food
+
+List User Github
 
 ## Screenshots
 
 <p float="left">
   <img src="./src/image/image.jpeg" width="200" height="350" alt="Input Table"/>
-
-  
+  <img src="./src/image/search.jpeg" width="200" height="350" alt="Input Table"/>
 </p>
 
 ## Fitures
@@ -19,7 +21,7 @@ This project is still on very early development stage. If you want to use for pr
 - List User
 - Search User By Username
 
-## Why React Native
+## Why Papa Kost
 
 - Esay To Use this Application
 - It's React Native, so it support android & iOS by default
