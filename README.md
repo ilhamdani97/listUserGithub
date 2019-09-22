@@ -5,9 +5,6 @@
 This project is still on very early development stage. If you want to use for production, use it with your own risk.
 <br>More feature Coming Really Soon.
 
-## BarBar Food
-
-List User Github
 
 ## Screenshots
 
@@ -20,11 +17,6 @@ List User Github
 
 - List User
 - Search User By Username
-
-## Why Papa Kost
-
-- Esay To Use this Application
-- It's React Native, so it support android & iOS by default
 
 ## Tech Stack
 
